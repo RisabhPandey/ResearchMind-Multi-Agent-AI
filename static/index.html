@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ResearchMind · Multi-Agent Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <div class="bg-glow glow-3"></div>
+
+  <header class="nav">
+    <div class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+        <circle cx="16" cy="16" r="14" stroke="url(#lg)" stroke-width="2.5"/>
+        <circle cx="16" cy="16" r="5" fill="url(#lg)"/>
+        <path d="M16 2v6M16 24v6M2 16h6M24 16h6" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span>Research<b>Mind</b></span>
+    </div>
+    <div class="nav-right">
+      <span class="badge"><i class="dot"></i> 4 AI agents online</span>
+      <button id="themeBtn" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-text">
+        <span class="eyebrow">✨ Multi-agent research assistant</span>
+        <h1>Research anything with a <span class="grad">team of AI agents</span></h1>
+        <p>A search agent finds sources, a reader digs into the best page, a writer drafts the report and a critic scores it. Watch each agent work live.</p>
+
+        <form id="researchForm" class="search-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg>
+          <input id="topic" type="text" placeholder="Ask anything…" autocomplete="off" required />
+          <button id="runBtn" type="submit"><span>Start Research</span> <b>→</b></button>
+        </form>
+
+        <div class="chips">
+          <button class="chip" data-topic="Latest breakthroughs in AI agents">🤖 AI agents</button>
+          <button class="chip" data-topic="Impact of climate change on agriculture">🌾 Climate &amp; farming</button>
+          <button class="chip" data-topic="Rise of electric vehicles in India">🚗 EVs in India</button>
+          <button class="chip" data-topic="Quantum computing progress">⚛️ Quantum</button>
+          <button class="chip" data-topic="Future of renewable energy">☀️ Renewables</button>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit">
+          <div class="ring r-outer"></div>
+          <div class="ring r-inner"></div>
+          <div class="core">
+            <svg width="54" height="54" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="14" stroke="#fff" stroke-width="2"/>
+              <circle cx="16" cy="16" r="5" fill="#fff"/>
+              <path d="M16 2v6M16 24v6M2 16h6M24 16h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="spin">
+            <div class="node n1"><span>🔎</span><em>Search</em></div>
+            <div class="node n2"><span>📖</span><em>Reader</em></div>
+            <div class="node n3"><span>✍️</span><em>Writer</em></div>
+            <div class="node n4"><span>🧐</span><em>Critic</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how" id="how">
+      <div class="how-card"><div class="num">01</div><div class="emoji">🔎</div><h4>Search</h4><p>Tavily searches the web for recent, reliable sources.</p></div>
+      <div class="how-card"><div class="num">02</div><div class="emoji">📖</div><h4>Read</h4><p>The reader agent scrapes the best URL for deeper context.</p></div>
+      <div class="how-card"><div class="num">03</div><div class="emoji">✍️</div><h4>Write</h4><p>The writer turns everything into a structured report.</p></div>
+      <div class="how-card"><div class="num">04</div><div class="emoji">🧐</div><h4>Critique</h4><p>The critic scores quality and suggests improvements.</p></div>
+    </section>
+
+    <!-- PIPELINE -->
+    <section id="pipelineWrap" class="hidden">
+      <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+      <div id="pipeline" class="pipeline">
+        <div class="step" data-step="1"><div class="icon">🔎</div><div><h4>Search Agent</h4><p>Finding sources</p></div><span class="status">Waiting</span></div>
+        <div class="line"></div>
+        <div class="step" data-step="2"><div class="icon">📖</div><div><h4>Reader Agent</h4><p>Scraping top page</p></div><span class="status">Waiting</span></div>
+        <div class="line"></div>
+        <div class="step" data-step="3"><div class="icon">✍️</div><div><h4>Writer</h4><p>Drafting report</p></div><span class="status">Waiting</span></div>
+        <div class="line"></div>
+        <div class="step" data-step="4"><div class="icon">🧐</div><div><h4>Critic</h4><p>Reviewing quality</p></div><span class="status">Waiting</span></div>
+      </div>
+    </section>
+
+    <div id="errorBox" class="error hidden"></div>
+
+    <!-- RESULTS -->
+    <section id="results" class="results hidden">
+      <div class="main-col">
+        <div id="statsRow" class="stats hidden">
+          <div class="stat"><b id="statWords">0</b><span>words</span></div>
+          <div class="stat"><b id="statRead">0</b><span>min read</span></div>
+          <div class="stat"><b id="statSources">0</b><span>sources</span></div>
+          <div class="stat"><b id="statScore">–</b><span>quality</span></div>
+        </div>
+
+        <article class="card report-card">
+          <div class="card-head">
+            <h3>📄 Final Report</h3>
+            <div class="actions">
+              <button id="copyBtn" class="ghost">Copy</button>
+              <button id="downloadBtn" class="ghost">Download .md</button>
+            </div>
+          </div>
+          <div id="truncWarn" class="warn hidden">⚠️ This report looks cut off. Increase <code>max_tokens</code> in <code>agents.py</code> for longer reports.</div>
+          <div id="report" class="markdown"></div>
+        </article>
+      </div>
+
+      <aside class="side">
+        <!-- Critic -->
+        <article class="card critic-card">
+          <div class="critic-top">
+            <div id="scoreRing" class="ring" style="--p:0"><span id="scoreText">–</span></div>
+            <div>
+              <h3>🧐 Critic Review</h3>
+              <div id="scoreLabel" class="score-label">Waiting for review…</div>
+            </div>
+          </div>
+
+          <div class="tabs" id="criticTabs">
+            <button class="tab active" data-tab="strengths">👍 Strengths</button>
+            <button class="tab" data-tab="improve">🛠 Improve</button>
+            <button class="tab" data-tab="verdict">⚖️ Verdict</button>
+          </div>
+          <div class="tab-body" id="criticBody">
+            <div class="skeleton"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </article>
+
+        <!-- Sources -->
+        <article class="card">
+          <h3>🔗 Sources</h3>
+          <div id="sources" class="sources"><p class="muted">Sources appear after the search step.</p></div>
+          <details>
+            <summary>🔎 Raw search output</summary>
+            <div id="searchOut" class="raw"></div>
+          </details>
+          <details>
+            <summary>📖 Scraped content</summary>
+            <div id="scrapeOut" class="raw"></div>
+          </details>
+        </article>
+      </aside>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <footer class="footer">Built with FastAPI · LangChain · Mistral · Tavily</footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
