@@ -277,9 +277,8 @@ how you want others to use the project.
 
 ------------------------------------------------------------------------
 
-::: {align="center"}
+<div align="center">
 **Built to explore the potential of agentic AI and automated research.**
 
 If you find ResearchMind useful, consider giving the repository a ⭐ on
 GitHub.
-:::
