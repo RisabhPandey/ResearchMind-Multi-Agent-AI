@@ -1,7 +1,10 @@
-::: {align="center"}
+<div align="center">
+
 # 🔬 ResearchMind
 
 ### Multi-Agent AI Research Assistant
+
+</div>
 
 **Turn a research question into a structured report with a team of
 specialized AI agents.**
